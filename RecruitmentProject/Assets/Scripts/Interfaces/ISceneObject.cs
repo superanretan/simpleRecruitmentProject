@@ -1,4 +1,7 @@
-public interface ISceneObject
+namespace Recruitment.Interfaces
 {
-   public void OnObjectClicked();
+    public interface ISceneObject
+    {
+        public void OnObjectClicked();
+    }
 }

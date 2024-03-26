@@ -1,25 +1,30 @@
+
+using Recruitment.UI.ScriptableObjects.SceneObject;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GridObject : MonoBehaviour
+namespace Recruitment.UI.GridObject
 {
-    [SerializeField] private Image objectImage;
-    [SerializeField] private TextMeshProUGUI objectDescriptionText;
-    [SerializeField] private GameObject selectedImage;
-    private Button _gridObjectButton;
-    public Button GridObjectButton =>_gridObjectButton;
-
-
-    public void SetObjectSelected(bool isActive)
+    public class GridObject : MonoBehaviour
     {
-        selectedImage.SetActive(isActive);
-    }
+        [SerializeField] private Image objectImage;
+        [SerializeField] private TextMeshProUGUI objectDescriptionText;
+        [SerializeField] private GameObject selectedImage;
+        private Button _gridObjectButton;
+        public Button GridObjectButton =>_gridObjectButton;
 
-    public void SetupGridObject(SceneObjectSo sceneObjectSo)
-    {
-        _gridObjectButton = GetComponent<Button>();
-        objectImage.sprite = sceneObjectSo.ObjectSprite;
-        objectDescriptionText.text = sceneObjectSo.ObjectDescription;
+
+        public void SetObjectSelected(bool isActive)
+        {
+            selectedImage.SetActive(isActive);
+        }
+
+        public void SetupGridObject(SceneObjectSo sceneObjectSo)
+        {
+            _gridObjectButton = GetComponent<Button>();
+            objectImage.sprite = sceneObjectSo.ObjectSprite;
+            objectDescriptionText.text = sceneObjectSo.ObjectDescription;
+        }
     }
 }

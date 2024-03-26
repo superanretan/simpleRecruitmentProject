@@ -1,25 +1,30 @@
+using Recruitment.Interfaces;
 using UnityEngine;
 
-public class SceneInteractions : MonoBehaviour
+namespace Recruitment.Managers.SceneInteractions
 {
-    private Camera _camera;
-    private RaycastHit _hit;
-    private Ray _ray;
-    private void Start()
+    public class SceneInteractions : MonoBehaviour
     {
-        _camera = Camera.main;
-    }
-
-   private void LateUpdate()
-    {
-        if (Input.GetMouseButtonDown(0))
+        private Camera _camera;
+        private RaycastHit _hit;
+        private Ray _ray;
+        private void Start()
         {
-           _ray = _camera.ScreenPointToRay(Input.mousePosition);
-           if (Physics.Raycast(_ray, out _hit))
-           {
-               if (_hit.transform.CompareTag("SceneObject"))
-                   _hit.transform.GetComponent<ISceneObject>().OnObjectClicked();
-           }
+            _camera = Camera.main;
         }
-    }
+
+        private void LateUpdate()
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                _ray = _camera.ScreenPointToRay(Input.mousePosition);
+                if (Physics.Raycast(_ray, out _hit))
+                {
+                    if (_hit.transform.CompareTag("SceneObject"))
+                        _hit.transform.GetComponent<ISceneObject>().OnObjectClicked();
+                }
+            }
+        }
+    } 
 }
+
